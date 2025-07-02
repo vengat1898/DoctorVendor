@@ -90,7 +90,7 @@ export default function PharmacyMyEnquiry() {
           <TouchableOpacity
             key={item.id}
             style={styles.card}
-            onPress={() => router.push(`/components/EnquiryDetails/${item.id}`)}
+            onPress={() => router.push('/components/PharmacyEnquiryInfo')}
           >
             <View style={styles.cardHeader}>
               <Text style={styles.cardName}>{item.name}</Text>

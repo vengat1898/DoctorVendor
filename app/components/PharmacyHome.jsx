@@ -51,21 +51,21 @@ export default function PharmacyHome() {
           <TouchableOpacity
             key={index}
             style={styles.dashboardItem}
-            onPress={() => {
-              if (item.title === 'Pharmacy Info') {
-                router.push('/components/PharmacyInfo');
-              } else if (item.title === 'My Products') {
-                router.push('/components/MyProducts');
-              } else if (item.title === 'Add products') {
-                router.push('/components/AddProducts');
-              } else if (item.title === 'Reply Ratings') {
-                router.push('/components/ReplyRatings');
-              } else if (item.title === 'Enquiries Received') {
-                router.push('/components/EnquiriesReceived');
-              } else if (item.title === 'Today Enquires') {
-                router.push('/components/TodayEnquires');
-              }
-            }}
+            // onPress={() => {
+            //   if (item.title === 'Pharmacy Info') {
+            //     router.push('/components/PharmacyInfo');
+            //   } else if (item.title === 'My Products') {
+            //     router.push('/components/MyProducts');
+            //   } else if (item.title === 'Add products') {
+            //     router.push('/components/AddProducts');
+            //   } else if (item.title === 'Reply Ratings') {
+            //     router.push('/components/ReplyRatings');
+            //   } else if (item.title === 'Enquiries Received') {
+            //     router.push('/components/EnquiriesReceived');
+            //   } else if (item.title === 'Today Enquires') {
+            //     router.push('/components/TodayEnquires');
+            //   }
+            // }}
           >
             <View style={styles.iconWrapper}>
               <Ionicons name={item.icon} size={24} color="#0c667b" />
@@ -89,7 +89,7 @@ export default function PharmacyHome() {
             key={item.id}
             style={styles.card}
             onPress={() => {
-              router.push(`/components/EnquiryDetails/${item.id}`);
+              router.push('/components/PharmacyEnquiryInfo');
             }}
           >
             <View style={styles.cardHeader}>
