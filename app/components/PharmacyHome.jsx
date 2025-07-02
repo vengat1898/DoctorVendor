@@ -1,43 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import styles from './styles/pharmacyHomeStyles';
-import login2 from '../../assets/images/login1.jpg';
+import login2 from '../../assets/images/login1.jpg'; // Profile image
 
 export default function PharmacyHome() {
+  const [activeTab, setActiveTab] = useState('Home');
+  const router = useRouter();
+
+  const dashboardItems = [
+    { title: 'Pharmacy Info', icon: 'medkit-outline' },
+    { title: 'My Products', icon: 'cube-outline' },
+    { title: 'Reply Ratings', icon: 'star-outline' },
+    { title: 'Add products', icon: 'add-circle-outline' },
+    { title: 'Enquiries Received', icon: 'mail-outline', badge: 2 },
+    { title: 'Today Enquires', icon: 'mail-open-outline', badge: 2 },
+  ];
+
   const enquiries = [
-    {
-      id: 1,
-      name: 'Rakesh',
-      date: '19-Jan-25',
-      location: 'Chennai,Keelkattalai',
-      time: '2.00pm',
-    },
-    {
-      id: 2,
-      name: 'Rajesh',
-      date: '19-Jan-25',
-      location: 'Chennai,Keelkattalai',
-      time: '2.00pm',
-    },
-    {
-      id: 3,
-      name: 'Revanth',
-      date: '19-Jan-25',
-      location: 'Chennai,Keelkattalai',
-      time: '2.00pm',
-    },
+    { id: 1, name: 'Rakesh', location: 'Chennai,Keelkattalai', time: '2.00pm', date: '19-Jan-25' },
+    { id: 2, name: 'Rajesh', location: 'Chennai,Keelkattalai', time: '2.00pm', date: '19-Jan-25' },
+    { id: 3, name: 'Revanth', location: 'Chennai,Keelkattalai', time: '2.00pm', date: '19-Jan-25' },
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
       {/* Header */}
       <View style={styles.header}>
         <Image source={login2} style={styles.profileImage} />
@@ -50,74 +45,121 @@ export default function PharmacyHome() {
         </TouchableOpacity>
       </View>
 
-      {/* Menu */}
-      <View style={styles.menuRow}>
-        <View style={styles.menuBox}>
-          <Ionicons name="medkit-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>Pharmacy Info</Text>
-        </View>
-        <View style={styles.menuBox}>
-          <Ionicons name="cube-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>My Products</Text>
-        </View>
-        <View style={styles.menuBox}>
-          <Ionicons name="star-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>Reply Ratings</Text>
-        </View>
-      </View>
-      <View style={styles.menuRow}>
-        <View style={styles.menuBox}>
-          <Ionicons name="add-circle-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>Add Products</Text>
-        </View>
-        <View style={styles.menuBox}>
-          <Ionicons name="mail-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>Enquiries Received</Text>
-          <View style={styles.menuBadge}>
-            <Text style={styles.menuBadgeText}>2</Text>
-          </View>
-        </View>
-        <View style={styles.menuBox}>
-          <Ionicons name="today-outline" size={24} color="#0c667b" />
-          <Text style={styles.menuText}>Today Enquires</Text>
-          <View style={styles.menuBadge}>
-            <Text style={styles.menuBadgeText}>2</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Recent Enquiries */}
-      <Text style={styles.sectionTitle}>Recent Enquires</Text>
-
-      {enquiries.map((item) => (
-        <View key={item.id} style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Text style={styles.cardName}>{item.name}</Text>
-            <Text style={styles.cardDate}>{item.date}</Text>
-          </View>
-
-          <View style={styles.cardGrayBox}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.cardLocation}>{item.location}</Text>
-              <Text style={styles.cardInfoNote}>Click to view Product info</Text>
+      {/* Dashboard */}
+      <View style={styles.dashboard}>
+        {dashboardItems.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.dashboardItem}
+            onPress={() => {
+              if (item.title === 'Pharmacy Info') {
+                router.push('/components/PharmacyInfo');
+              } else if (item.title === 'My Products') {
+                router.push('/components/MyProducts');
+              } else if (item.title === 'Add products') {
+                router.push('/components/AddProducts');
+              } else if (item.title === 'Reply Ratings') {
+                router.push('/components/ReplyRatings');
+              } else if (item.title === 'Enquiries Received') {
+                router.push('/components/EnquiriesReceived');
+              } else if (item.title === 'Today Enquires') {
+                router.push('/components/TodayEnquires');
+              }
+            }}
+          >
+            <View style={styles.iconWrapper}>
+              <Ionicons name={item.icon} size={24} color="#0c667b" />
+              {item.badge && (
+                <View style={styles.badgeOverlay}>
+                  <Text style={styles.badgeTextSmall}>{item.badge}</Text>
+                </View>
+              )}
             </View>
-            <View style={styles.cardIcons}>
-              <Ionicons name="call" size={20} color="#fff" style={styles.callIcon} />
-              <FontAwesome name="whatsapp" size={20} color="#fff" style={styles.whatsappIcon} />
-            </View>
-          </View>
+            <Text style={styles.dashboardText}>{item.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
 
-          <View style={styles.cardFooter}>
-            <Text style={styles.cardTime}>{item.time}</Text>
-            <TouchableOpacity>
-              <Text style={styles.details}>Details</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      ))}
-    </ScrollView>
+      <Text style={styles.sectionTitle}>Recent Enquiries</Text>
+
+      {/* Updated Enquiry Card Style */}
+      <ScrollView contentContainerStyle={styles.cardList}>
+        {enquiries.map((item) => (
+          <TouchableOpacity
+            key={item.id}
+            style={styles.card}
+            onPress={() => {
+              router.push(`/components/EnquiryDetails/${item.id}`);
+            }}
+          >
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardName}>{item.name}</Text>
+              <Text style={styles.cardDate}>{item.date}</Text>
+            </View>
+            <View style={styles.cardBody}>
+              <View style={styles.cardInfo}>
+                <Text style={styles.cardLocation}>{item.location}</Text>
+                <Text style={styles.cardInfoNote}>Click to view Product info</Text>
+              </View>
+              <View style={styles.iconGroup}>
+                <View style={styles.iconCall}>
+                  <Ionicons name="call-outline" size={18} color="#fff" />
+                </View>
+                <View style={styles.iconWhatsapp}>
+                  <FontAwesome name="whatsapp" size={18} color="#fff" />
+                </View>
+              </View>
+            </View>
+            <View style={styles.cardFooter}>
+              <Text style={styles.cardTime}>{item.time}</Text>
+              <TouchableOpacity
+                onPress={() => router.push(`/components/EnquiryDetails/${item.id}`)}
+              >
+                <Text style={styles.details}>Details</Text>
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      {/* Footer */}
+      <View style={styles.footer}>
+        {[
+          { name: 'Home', icon: 'home-outline' },
+          { name: 'My Enquiry', icon: 'document-text-outline' },
+          { name: 'Help & Support', icon: 'headset-outline' },
+          { name: 'Refer & earn', icon: 'person-add-outline' },
+        ].map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => {
+              setActiveTab(item.name);
+              if (item.name === 'My Enquiry') {
+                router.push('/components/PharmacyMyEnquiry');
+              }
+            }}
+            style={styles.footerItem}
+          >
+            <Ionicons
+              name={item.icon}
+              size={20}
+              color={activeTab === item.name ? '#0c667b' : '#aaa'}
+            />
+            <Text
+              style={[
+                styles.footerText,
+                activeTab === item.name && { color: '#0c667b', fontWeight: 'bold' },
+              ]}
+            >
+              {item.name}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </SafeAreaView>
   );
 }
+
 
 
 

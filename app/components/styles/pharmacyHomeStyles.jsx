@@ -1,16 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
+  safeArea: {
     flex: 1,
-    paddingBottom: 20,
+    backgroundColor: '#fff',
   },
+
+  // Header
   header: {
     backgroundColor: '#0c667b',
-    padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
   profileImage: {
     width: 30,
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: 12,
     flex: 1,
   },
   notificationBadge: {
@@ -30,107 +32,131 @@ const styles = StyleSheet.create({
   badge: {
     position: 'absolute',
     top: -4,
-    right: -8,
+    right: -6,
     backgroundColor: 'orange',
     borderRadius: 6,
     paddingHorizontal: 4,
-    paddingVertical: 1,
   },
   badgeText: {
     color: '#fff',
     fontSize: 10,
   },
-  menuRow: {
+
+  // Dashboard
+  dashboard: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginVertical: 10,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    padding: 16,
   },
-  menuBox: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#f8f8f8',
-    borderRadius: 12,
+  dashboardItem: {
+    width: '30%',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  iconWrapper: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#eaf9ff',
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative',
+    marginBottom: 6,
   },
-  menuText: {
-    fontSize: 12,
-    marginTop: 6,
-    textAlign: 'center',
-  },
-  menuBadge: {
+  badgeOverlay: {
     position: 'absolute',
-    top: 6,
-    right: 12,
+    top: -6,
+    right: -6,
     backgroundColor: 'orange',
-    borderRadius: 10,
-    paddingHorizontal: 5,
-    paddingVertical: 1,
+    borderRadius: 8,
+    paddingHorizontal: 4,
   },
-  menuBadgeText: {
+  badgeTextSmall: {
     color: '#fff',
     fontSize: 10,
   },
+  dashboardText: {
+    fontSize: 11,
+    textAlign: 'center',
+    color: '#444',
+  },
+
+  // Section Title
   sectionTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    marginHorizontal: 16,
-    marginTop: 10,
+    paddingHorizontal: 16,
     marginBottom: 8,
+  },
+
+  // Enquiry Cards
+  cardList: {
+    paddingHorizontal: 16,
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 12,
-    marginHorizontal: 16,
-    marginBottom: 12,
-    elevation: 2,
+    padding: 14,
+    marginBottom: 14,
     shadowColor: '#000',
     shadowOpacity: 0.05,
     shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   cardName: {
-    fontSize: 16,
     fontWeight: 'bold',
+    fontSize: 13,
   },
   cardDate: {
-    fontSize: 13,
-    color: '#999',
+    fontSize: 11,
+    color: '#888',
   },
-  cardGrayBox: {
-    backgroundColor: '#e8e8e8',
-    borderRadius: 8,
+  cardBody: {
     flexDirection: 'row',
-    padding: 10,
+    justifyContent: 'space-between',
     marginTop: 8,
+    backgroundColor: '#f0f0f0',
+    padding: 10,
+    borderRadius: 6,
     alignItems: 'center',
   },
+  cardInfo: {
+    flex: 1,
+  },
   cardLocation: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: 12,
+    color: '#555',
     marginBottom: 4,
   },
   cardInfoNote: {
-    fontSize: 13,
-    color: '#999',
+    fontSize: 11,
+    color: '#888',
   },
-  cardIcons: {
+  iconGroup: {
     flexDirection: 'row',
-    gap: 8,
+    alignItems: 'center',
+    marginLeft: 10,
   },
-  callIcon: {
+  iconCall: {
     backgroundColor: '#005EFF',
     padding: 6,
     borderRadius: 6,
-    marginRight: 6,
+    marginRight: 8,
   },
-  whatsappIcon: {
+  iconWhatsapp: {
     backgroundColor: '#25D366',
     padding: 6,
     borderRadius: 6,
@@ -138,16 +164,34 @@ const styles = StyleSheet.create({
   cardFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 8,
+    marginTop: 10,
   },
   cardTime: {
-    fontSize: 14,
-    color: '#444',
+    fontSize: 13,
+    color: '#333',
   },
   details: {
-    color: '#006B8F',
+    fontSize: 13,
+    color: '#116C89',
     fontWeight: 'bold',
-    fontSize: 14,
+  },
+
+  // Footer Navigation
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+  },
+  footerItem: {
+    alignItems: 'center',
+  },
+  footerText: {
+    fontSize: 10,
+    marginTop: 2,
+    color: '#999',
   },
 });
 
