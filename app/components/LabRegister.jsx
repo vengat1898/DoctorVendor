@@ -75,13 +75,7 @@ export default function LabRegister() {
   };
 
   const handleNext = () => {
-    const selectedHours = Object.values(hours).filter((h) => h.open && h.from && h.to);
-    if (name && license && specialization && address && selectedHours.length > 0) {
-      console.log('Submitted:', { name, license, specialization, address, hours });
       router.push('/components/LabHome');
-    } else {
-      router.push('/components/LabHome');
-    }
   };
 
   const pickerStyle = {

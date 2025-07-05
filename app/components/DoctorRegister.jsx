@@ -42,12 +42,7 @@ export default function DoctorProfile() {
   const router = useRouter();
 
   const handleNext = () => {
-    if (name && specialization && gender && city && address) {
       router.push('/components/DoctorHome');
-      // router.push('/NextStep');
-    } else {
-      alert('Please fill out all fields');
-    }
   };
 
   const pickerStyle = {
