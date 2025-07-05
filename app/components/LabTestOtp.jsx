@@ -102,7 +102,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import styles from './styles/LabTestOtpStyles';
+import styles from './styles/otpStyles';
 import { useRouter } from 'expo-router';
 
 export default function Otp() {
@@ -123,7 +123,7 @@ export default function Otp() {
   };
 
   const handleVerify = () => {
-      router.push('/components/LabRegister'); // ✅ ROUTE SCREEN in /app
+      router.push('/components/LabRegister'); // ✅ navigates to screen in /app
   };
 
   const handleResend = () => {
@@ -136,8 +136,8 @@ export default function Otp() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>OTP</Text>
-        <Text style={styles.subtitle}>Please enter valid OTP</Text>
+        <Text style={styles.title}>Lab OTP</Text>
+        <Text style={styles.subtitle}>Please enter the valid OTP</Text>
 
         <View style={styles.otpContainer}>
           {otp.map((digit, index) => (

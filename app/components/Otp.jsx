@@ -81,7 +81,6 @@
 //     </KeyboardAvoidingView>
 //   );
 // }
-
 import React, { useState, useRef } from 'react';
 import {
   View,
@@ -113,9 +112,9 @@ export default function Otp() {
     }
   };
 
-const handleVerify = () => {
-  router.push('/components/DoctorRegister');
-};
+  const handleVerify = () => {
+      router.push('/components/DoctorRegister'); // ✅ navigates to screen in /app
+  };
 
   const handleResend = () => {
     Alert.alert('OTP resent!', 'Please check your messages.');
@@ -127,8 +126,8 @@ const handleVerify = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.title}>OTP</Text>
-        <Text style={styles.subtitle}>Please enter the 4-digit OTP</Text>
+        <Text style={styles.title}>Doctor OTP</Text>
+        <Text style={styles.subtitle}>Please enter the valid OTP</Text>
 
         <View style={styles.otpContainer}>
           {otp.map((digit, index) => (
