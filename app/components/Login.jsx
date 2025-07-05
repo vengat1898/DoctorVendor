@@ -86,7 +86,7 @@ export default function Login() {
   <TouchableOpacity style={styles.button} onPress={() => router.push('/components/PharmacyLogin')}>
     <Text style={styles.buttonText}>Pharmacy</Text>
   </TouchableOpacity>
-  <TouchableOpacity style={styles.button} onPress={() => router.push('/LabProfile')}>
+  <TouchableOpacity style={styles.button} onPress={() => router.push('/components/LabTestLogin')}>
     <Text style={styles.buttonText}>Laboratory</Text>
   </TouchableOpacity>
 </View>
